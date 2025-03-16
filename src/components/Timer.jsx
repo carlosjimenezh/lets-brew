@@ -7,12 +7,18 @@ function Timer({ active }) {
     setTime(time => time + 1)
   }
   useEffect(() => {
-    if (active && startTime) {
+    if (startTime) {
       const interval = setInterval(() => {getTime()}, 1000)
       console.log(time)
       return () => clearInterval(interval)
+    } else {console.log(time)}
+  }, [startTime, time])
+  useEffect(() => {
+    if (!active) {
+      setTime(0)
+      setStartTime(false)
     }
-  }, [active, startTime, time])
+  }, [active])
   const formatTime = (seconds) => {
     const mins = String(Math.floor(seconds / 60)).padStart(2, '0') 
     const secs = String(seconds % 60).padStart(2, '0') 
@@ -34,6 +40,7 @@ function Timer({ active }) {
               {startTime ? "Stop" : "Start"}
             </span>
           </button>
+          {!startTime && time !== 0 ? 'Brew time: '+formatTime(time) : ''}
         </>
       ) : (
         <>

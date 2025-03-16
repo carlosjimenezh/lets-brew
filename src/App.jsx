@@ -17,14 +17,14 @@ function App() {
       </h1>
       <h2 className="relative mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-4xl dark:text-white underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
         {selectMethod ? name : "Select filter"}
-        {brewInfo && <span className="absolute right-0 underline underline-offset-3 decoration-8 decoration-blue-400 cursor-pointer" onClick={() => setSelectMethod('')}>Atras</span>}
+        {brewInfo && <span className="text-xl absolute right-0 underline underline-offset-3 decoration-4 decoration-blue-400 cursor-pointer" onClick={() => setSelectMethod('')}>Back</span>}
       </h2>
       <div className="grid grid-cols-2 gap-4 my-20 relative">
         <CoffeeMethodSelector
           brewInfo={brewInfo}
           setSelectMethod={setSelectMethod}
         />
-        <Timer active={selectMethod} />
+        <Timer active={brewInfo} />
       </div>
     </div>
   );

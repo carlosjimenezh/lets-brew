@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import Timer from "./components/Timer";
+import CoffeeMethodSelector from "./components/CoffeeMethodSelector";
+import { methods } from "./data/methods";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectMethod, setSelectMethod] = useState("");
+  const selectMethodInfo =
+    selectMethod && methods.find((method) => method.id === selectMethod);
+  const { name, brewInfo } = selectMethodInfo;
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="md:container mx-auto p-4 mt-10">
+      <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+        Lets Brew
+      </h1>
+      <h2 className="relative mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-4xl dark:text-white underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
+        {selectMethod ? name : "Select filter"}
+        {brewInfo && <span className="absolute right-0 underline underline-offset-3 decoration-8 decoration-blue-400 cursor-pointer" onClick={() => setSelectMethod('')}>Atras</span>}
+      </h2>
+      <div className="grid grid-cols-2 gap-4 my-20 relative">
+        <CoffeeMethodSelector
+          brewInfo={brewInfo}
+          setSelectMethod={setSelectMethod}
+        />
+        <Timer active={selectMethod} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

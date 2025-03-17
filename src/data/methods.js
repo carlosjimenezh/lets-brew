@@ -1,60 +1,103 @@
-
-  // crear una api para los metodos
-  export const methods = [
-    {
-      id: 1,
-      name: 'V60',
-      brewInfo: {
-        temperature: {
-          lightRoast: '203 - 212 degrees',
-          mediumRoast: '194 - 203 degrees',
-          darkRoast: '185 - 195 degrees',
+// crear una api para los metodos
+export const methods = [
+  {
+    id: 1,
+    name: "V60",
+    brewInfo: {
+      temperature: "90C",
+      grind: "Medium",
+      coffee: "15g",
+      water: "220ml",
+      extractionTime: "3:00",
+      pouringIntervals: [
+        {
+          time: 45,
+          weight: "45g",
         },
-        grind: 'Medium coarse',
-        ratio: '1:15',
-        extractionTime: '3:00 - 5:00',
-      }
-    },
-    {
-      id: 2,
-      name: 'Chemex',
-      brewInfo: {
-        temperature: {
-          lightRoast: '203 - 212 degrees',
-          mediumRoast: '194 - 203 degrees',
-          darkRoast: '185 - 195 degrees',
+        {
+          time: 45,
+          weight: "120g",
         },
-        grind: 'Medium coarse',
-        ratio: '1:15',
-        extractionTime: '3:00 - 5:00',
-      }
-    },
-    {
-      id: 3,
-      name: 'Frensh press',
-      brewInfo: {
-        temperature: {
-          lightRoast: '203 - 212 degrees',
-          mediumRoast: '194 - 203 degrees',
-          darkRoast: '185 - 195 degrees',
+        {
+          time: 45,
+          weight: "220g",
         },
-        grind: 'Medium coarse',
-        ratio: '1:15',
-        extractionTime: '3:00 - 5:00',
-      }
+      ],
     },
-    {
-      id: 4,
-      name: 'Aeropress',
-      brewInfo: {
-        temperature: {
-          lightRoast: '203 - 212 degrees',
-          mediumRoast: '194 - 203 degrees',
-          darkRoast: '185 - 195 degrees',
+  },
+  {
+    id: 2,
+    name: "Chemex",
+    brewInfo: {
+      temperature: "90C",
+      grind: "Medium",
+      coffee: "15g",
+      water: "220ml",
+      extractionTime: "3:00",
+      pouringIntervals: [
+        {
+          time: 45,
+          weight: "45g",
         },
-        grind: 'Medium coarse',
-        ratio: '1:15',
-        extractionTime: '3:00 - 5:00',
-      }
+        {
+          time: 45,
+          weight: "120g",
+        },
+        {
+          time: 45,
+          weight: "220g",
+        },
+      ],
     },
-  ];
+  },
+  {
+    id: 3,
+    name: "Frensh press",
+    brewInfo: {
+      temperature: "90C",
+      grind: "Medium",
+      coffee: "15g",
+      water: "220ml",
+      extractionTime: "3:00",
+      pouringIntervals: [
+        {
+          time: 45,
+          weight: "45g",
+        },
+        {
+          time: 45,
+          weight: "120g",
+        },
+        {
+          time: 45,
+          weight: "220g",
+        },
+      ],
+    },
+  },
+  {
+    id: 4,
+    name: "Aeropress",
+    brewInfo: {
+      temperature: "90C",
+      grind: "Medium",
+      coffee: "15g",
+      water: "220ml",
+      extractionTime: "3:00",
+      pouringIntervals: [
+        {
+          time: 45,
+          weight: "45g",
+        },
+        {
+          time: 45,
+          weight: "120g",
+        },
+        {
+          time: 45,
+          weight: "220g",
+        },
+      ],
+    },
+  },
+];

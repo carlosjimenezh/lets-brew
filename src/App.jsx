@@ -11,13 +11,13 @@ function App() {
   const { name, brewInfo } = selectMethodInfo;
 
   return (
-    <div className="md:container mx-auto p-4 mt-10">
+    <div className="container max-w-2xl mx-auto p-4 mt-10">
       <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
         Lets Brew
       </h1>
       <h2 className="relative mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl lg:text-4xl dark:text-white underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
         {selectMethod ? name : "Select filter"}
-        {brewInfo && <span className="text-xl absolute right-0 underline underline-offset-3 decoration-4 decoration-blue-400 cursor-pointer" onClick={() => setSelectMethod('')}>Back</span>}
+        {brewInfo && <span className="text-xl absolute left-0 top-12 cursor-pointer text-gray-500" onClick={() => setSelectMethod('')}>Back</span>}
       </h2>
       <div className="grid grid-cols-2 gap-4 my-20 relative">
         <CoffeeMethodSelector

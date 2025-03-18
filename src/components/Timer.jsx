@@ -1,24 +1,6 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-function Timer({ active }) {
-  const [startTime, setStartTime] = useState(false);
-  const [time, setTime] = useState(0);
-  const getTime = () => {
-    setTime(time => time + 1)
-  }
-  useEffect(() => {
-    if (startTime) {
-      const interval = setInterval(() => {getTime()}, 1000)
-      console.log(time)
-      return () => clearInterval(interval)
-    } else {console.log(time)}
-  }, [startTime, time])
-  useEffect(() => {
-    if (!active) {
-      setTime(0)
-      setStartTime(false)
-    }
-  }, [active])
+function Timer({ active, time, startTime, setStartTime }) {
   const formatTime = (seconds) => {
     const mins = String(Math.floor(seconds / 60)).padStart(2, '0') 
     const secs = String(seconds % 60).padStart(2, '0') 

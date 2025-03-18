@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Timer from "./components/Timer";
 import CoffeeMethodSelector from "./components/CoffeeMethodSelector";
@@ -10,6 +10,24 @@ function App() {
     selectMethod && methods.find((method) => method.id === selectMethod);
   const { name, brewInfo } = selectMethodInfo;
 
+  const [startTime, setStartTime] = useState(false);
+  const [time, setTime] = useState(0);
+  const getTime = () => {
+    setTime(time => time + 1)
+  }
+  useEffect(() => {
+    if (startTime) {
+      const interval = setInterval(() => {getTime()}, 1000)
+      console.log(time)
+      return () => clearInterval(interval)
+    } else {console.log(time)}
+  }, [startTime, time])
+  useEffect(() => {
+    if (!brewInfo) {
+      setTime(0)
+      setStartTime(false)
+    }
+  }, [brewInfo])
   return (
     <div className="container max-w-2xl mx-auto p-4 mt-10">
       <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
@@ -24,7 +42,7 @@ function App() {
           brewInfo={brewInfo}
           setSelectMethod={setSelectMethod}
         />
-        <Timer active={brewInfo} />
+        <Timer active={brewInfo} time={time} setStartTime={setStartTime} startTime={startTime} />
       </div>
     </div>
   );

@@ -1,11 +1,13 @@
 import { methods } from "../data/methods.js";
 import BrewInfo from "./BrewInfo";
 
-function CoffeeMethodSelector({ brewInfo, setSelectMethod }) {
+function CoffeeMethodSelector({startTime, time, brewInfo, setSelectMethod }) {
   if (brewInfo ) {
     return (
       <BrewInfo
+        startTime={startTime}
         brewInfo={brewInfo}
+        time={time}
       />
     );
   } else {

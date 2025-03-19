@@ -18,9 +18,9 @@ function App() {
   useEffect(() => {
     if (startTime) {
       const interval = setInterval(() => {getTime()}, 1000)
-      console.log(time)
+      // console.log(time)
       return () => clearInterval(interval)
-    } else {console.log(time)}
+    } //else {console.log(time)}
   }, [startTime, time])
   useEffect(() => {
     if (!brewInfo) {
@@ -39,6 +39,8 @@ function App() {
       </h2>
       <div className="grid grid-cols-2 gap-4 my-20 relative">
         <CoffeeMethodSelector
+          startTime={startTime}
+          time={time}
           brewInfo={brewInfo}
           setSelectMethod={setSelectMethod}
         />

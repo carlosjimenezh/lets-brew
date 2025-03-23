@@ -1,16 +1,4 @@
-import { methods } from "../data/methods.js";
-import BrewInfo from "./BrewInfo";
-
-function CoffeeMethodSelector({startTime, time, brewInfo, setSelectMethod }) {
-  if (brewInfo ) {
-    return (
-      <BrewInfo
-        startTime={startTime}
-        brewInfo={brewInfo}
-        time={time}
-      />
-    );
-  } else {
+function CoffeeMethodSelector({ methods, setSelectMethod }) {
     return (
       <div className="grid grid-cols-2 gap-4">
         {methods.map((method) => (
@@ -24,7 +12,6 @@ function CoffeeMethodSelector({startTime, time, brewInfo, setSelectMethod }) {
         ))}
       </div>
     );
-  }
 }
 
 export default CoffeeMethodSelector;

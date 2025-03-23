@@ -1,36 +1,6 @@
-import { useEffect, useState } from "react";
 
-function BrewInfo({ startTime, brewInfo, time }) {
+function BrewInfo( {brewInfo, elapsedTime }) {
   const { pouringIntervals } = brewInfo;
-
-  //crear estado para los vertidos terminados
-  const [pourState, setPourState] = useState(Array(pouringIntervals.length).fill(null))
-
-  //estado para vertido activo
-  const [activePour, setActivePour] = useState(Array(pouringIntervals.length).fill(null))
-
-  const pouringTimes = pouringIntervals.reduce((previous, { time }, i) => {
-    const sum = i === 0 ? time : previous[i - 1] + time;
-    return [...previous, sum];
-  }, []);
-
-  //crear estado con los tiempos en que tiene que pasar cada vertido
-  const [remainPouringTimes, setremainPouringTimes] = useState(pouringTimes)
-
-  const formatTime = (seconds) => {
-    const mins = String(Math.floor(seconds / 60)).padStart(2, "0");
-    const secs = String(seconds % 60).padStart(2, "0");
-    return `${mins}:${secs}`;
-  };
-
-  useEffect(() => {
-    //restar hasta cero cada uno de los vertidos, si la posicion inicial es mayor a cero entonces aún le falta tiempo
-    const updatedPoutState = pouringTimes.map((pourTime) => time >= pourTime)
-    const updatedRemainPouringTime = remainPouringTimes.map((pourTime) => pourTime - 1  )
-    setPourState(updatedPoutState);
-    setremainPouringTimes(updatedRemainPouringTime)
-    // console.log(remainPouringTimes)
-  }, [time]);
 
   return (
     <div className="relative">
@@ -49,10 +19,10 @@ function BrewInfo({ startTime, brewInfo, time }) {
         <tbody>
           {pouringIntervals.map(({ weight }, index) => (
             <tr key={index}>
-              <th className="text-center font-medium">{remainPouringTimes[index] + 1 >= 0 ? formatTime(remainPouringTimes[index] + 1) : '00:00'}</th>
+              <th className="text-center font-medium">{elapsedTime}</th>
               <th className="text-center font-medium">{weight}</th>
               <th className="text-center font-medium">
-                <span className={remainPouringTimes[index] < 0 && time !== 0 ? 'animate-pulse' : 'opacity-0'}>
+                <span className="animate-pulse">
                   🌀
                 </span>
               </th>
@@ -98,7 +68,7 @@ function Overview({ brewInfo }) {
             </span>
           </div>
         </div>
-        <h3 className=" font-bold">Brew time:</h3>
+        <h3 className=" font-bold">Brew elapsedTime:</h3>
         <div className="py-2">
           <div className="flex gap-4">
             <span className="px-2 border border-gray-200 rounded-lg shadow-sm">
